@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Sangam Bag Shop — Inventory & Collection</title>
+<meta name="description" content="Sangam Bag Shop inventory and luggage collection">
+<link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+<div class="noise"></div>
+<header class="topbar">
+  <a class="logo" href="#home" data-route="home"><span class="logo-mark">S</span><span>SANGAM <small>BAG SHOP</small></span></a>
+  <nav><button data-route="home" class="nav-link active">Home</button><button data-route="collection" class="nav-link">Collection</button><button data-route="inventory" class="nav-link">Inventory</button><button data-route="sales" class="nav-link">Sales</button></nav>
+  <button class="cart-pill" id="jumpInventory">Manage Stock <span>↗</span></button>
+</header>
+
+<main>
+<section id="home" class="screen hero-screen">
+  <div class="hero-orb orb-a"></div><div class="hero-orb orb-b"></div>
+  <div class="hero-grid"></div>
+  <div class="hero-copy reveal">
+    <div class="eyebrow"><span></span> CURATED TRAVEL • EVERYDAY • BUSINESS</div>
+    <h1>Carry your<br><i>next chapter.</i></h1>
+    <p>A cinematic storefront for Sangam Bag Shop — with live MySQL inventory behind the experience.</p>
+    <div class="hero-actions"><button class="primary big" data-route="collection">Explore Collection <b>↓</b></button><button class="ghost" data-route="inventory">Open Inventory</button></div>
+    <div class="hero-stats"><div><strong id="heroCount">94</strong><span>catalogue pieces</span></div><div><strong>20%</strong><span>storewide offer</span></div><div><strong>LIVE</strong><span>MySQL stock</span></div></div>
+  </div>
+  <div class="hero-product reveal delay-2"><div class="floating-card"><div class="card-label">FEATURED / 01</div><img id="heroImage" src="/static/products/ETERNA.jpg" alt="Featured luggage"><div class="hero-product-meta"><span>Safari ETERNA</span><b>20% OFF</b></div></div></div>
+  <div class="scroll-cue"><span></span> SCROLL TO DISCOVER</div>
+</section>
+
+<section id="collection" class="screen collection-screen">
+  <div class="section-head reveal"><div><div class="eyebrow"><span></span> THE COLLECTION</div><h2>Built for <i>movement.</i></h2></div><p>Browse the live catalogue. Prices below automatically show the 20% customer discount while the original MRP remains visible.</p></div>
+  <div class="collection-tools reveal"><div class="search-wrap"><span>⌕</span><input id="storeSearch" placeholder="Search model, colour or product number..."></div><div id="categoryChips" class="chips"><button class="chip active" data-cat="all">All</button></div></div>
+  <div id="productGrid" class="product-grid"></div>
+</section>
+
+<section id="inventory" class="screen admin-screen">
+  <div class="section-head reveal"><div><div class="eyebrow"><span></span> CONTROL ROOM</div><h2>Inventory <i>live.</i></h2></div><div class="admin-actions"><button class="ghost" id="refreshInventory">Refresh</button><button class="primary" id="openAdd">＋ Add Product</button></div></div>
+  <div class="stats-strip reveal"><div><span>PRODUCTS</span><strong id="totalProducts">0</strong></div><div><span>UNITS</span><strong id="totalStock">0</strong></div><div><span>LOW STOCK</span><strong id="lowStock">0</strong></div><div><span>SALES</span><strong id="totalSales">₹0</strong></div></div>
+  <div class="tools reveal"><div class="search-wrap"><span>⌕</span><input id="adminSearch" placeholder="Search inventory..."></div><select id="sort"><option value="">Sort</option><option value="price_asc">Price: Low → High</option><option value="price_desc">Price: High → Low</option><option value="stock_asc">Stock: Low → High</option><option value="stock_desc">Stock: High → Low</option></select><div class="dsa-badge">DSA • Hash Table + Linear Search + Bubble Sort</div></div>
+  <div class="table-shell reveal"><table><thead><tr><th>NUMBER</th><th>PRODUCT</th><th>CATEGORY</th><th>MRP</th><th>STOCK</th><th>STATUS</th><th>ACTIONS</th></tr></thead><tbody id="productRows"></tbody></table></div>
+</section>
+
+<section id="sales" class="screen sales-screen">
+  <div class="section-head reveal"><div><div class="eyebrow"><span></span> TRANSACTIONS</div><h2>Sales <i>history.</i></h2></div></div>
+  <div class="table-shell reveal"><table><thead><tr><th>SALE</th><th>PRODUCT</th><th>NUMBER</th><th>QTY</th><th>TOTAL</th><th>DATE</th></tr></thead><tbody id="salesRows"></tbody></table></div>
+</section>
+</main>
+
+<div id="toast" class="toast"></div>
+<div id="modal" class="modal hidden"><div class="modal-backdrop"></div><div class="modal-box"><button class="close" id="closeModal">×</button><div class="eyebrow"><span></span> PRODUCT EDITOR</div><h3 id="modalTitle">Add Product</h3><p class="modal-note">Edit every catalogue field here. Changes are saved directly to MySQL.</p><form id="productForm"><input type="hidden" id="editId"><div class="form-grid"><label>Product Number<input id="product_number" placeholder="LUG-095" required></label><label>Product Name<input id="name" placeholder="Product name" required></label><label>Category<input id="category" placeholder="Hard Luggage" required></label><label>MRP (₹)<input id="price" type="number" min="0" step="0.01" required></label><label>Stock Quantity<input id="quantity" type="number" min="0" required></label><label>Image URL / Path<input id="image_url" placeholder="/static/products/ETERNA.jpg"></label></div><div class="form-actions"><button type="button" class="ghost" id="cancelModal">Cancel</button><button class="primary" type="submit" id="saveBtn">Save Product</button></div></form></div></div>
+<footer><span>SANGAM BAG SHOP</span><span>CA2 • HTML / CSS / JavaScript • Python • MySQL</span></footer>
+<script src="/static/app.js"></script>
+</body></html>
